@@ -5,15 +5,9 @@ const VehicleModule = require("./vehicleBaseClass")
 let v = new VehicleModule.Vehicle("Mercury", "Sedan", "1965", "color", "mileage");
 console.log(v.make)
 
-
-//After you write the derived Car class, you should test it out.
-
-//Note: You can code your derived Car class here or make a file named index.js and do it there.
-
-
 //TO DO: Code the Car subclass here or in index.js file, i.e. class Car extends Vehicle ...
 
-   class car extends VehicleModule {
+   class Car extends VehicleModule.Vehicle {
 
         constructor(make, model, year, color, mileage) {
         super(make, model, year, color, mileage);
@@ -23,38 +17,51 @@ console.log(v.make)
             this.maximumSpeed = 160;
             this.fuel = 10;
             this.scheduleService = false;
+        } 
+
+        start() {
+            if (this.fuel > 0) {
+                console.log("engine started!!!");
+                return this.started = true;
+            } else {
+                console.log("engine cannot start");
+                return this.started = false;
+            }
         }
-
-   }
-
-
-//TO DO: Creating Instances and Testing Them
-
-
-
-//You can use the same instance "v" of the Vehicle class above for the base class.
-
-//Create at least two new instances of the Car class and test them here:
-
-
-start() {
-    if (this.fuel > 0) {
-        return this.started = true;
-        console.log("engine started...!!!");
-    } else {
-        return this.started = false;
-        console.log("engine cannot start...");
-    }
-}
-
-
-scheduleService() {
-    if (this.mileage > 30000) {
-        this.scheduleService = true;
-        return this.scheduleService;
-
-    } else {
-        return this.scheduleService = false;
         
-    }
-}
+
+        scheduleService() {
+            if (this.mileage > 30000) {
+                this.scheduleService = true;
+                return this.scheduleService;
+                
+            } else {
+                return this.scheduleService = false;
+                
+            }
+}}
+
+            //Create at least two new instances of the Car class and test them here:
+            //Below created the objects, this is what is passed around.
+            //(Instances means examples so Hyundai and Toyota, these are specific examples
+            // of the class)
+
+            let Hyundai = new Car ("Tuscon", "SUV", "2012", "white", "100000");
+            console.log(Hyundai.make)
+            console.log(Hyundai.model)
+            console.log(Hyundai.year)
+            console.log(Hyundai.color)
+            console.log(Hyundai.mileage)
+            console.log(Hyundai.start())
+     //       console.log(Hyundai.scheduleService())
+
+            let Toyota = new Car ("Camry", "Sedan", "2020", "red", "25000");
+            console.log(Toyota.make)
+            console.log(Toyota.model)
+            console.log(Toyota.year)
+            console.log(Toyota.color)
+            console.log(Toyota.mileage)
+            console.log(Toyota.start())
+       //     console.log(Toyota.scheduleService())
+
+
